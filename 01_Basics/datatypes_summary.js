@@ -56,3 +56,29 @@ console.log(typeof id)
 
 
 
+// ************************ Memory *************************
+
+// 1. Stack (Primitive)
+// 2. Heap (Non-Primitive)
+
+let myName = "Shailesh"
+
+let anotherName = myName
+anotherName = "Kumawat"
+
+console.log(anotherName);
+console.log(myName);
+
+let userOne = {
+    email: "user@gmail.com",
+    upi: "user@gpl"
+}
+
+let userTwo = userOne
+
+userTwo.email = "user123@gmail.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
+
+
