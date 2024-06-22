@@ -6,23 +6,37 @@
     <title>API Request</title>
 </head>
 <body style="background-color: #212121; color: white;">
+
+    <!-- <div class="main"></div> -->
+    <button class="submit">Submit</button>
     
 </body>
-<script>
-    const requestUrl = 'https://api.github.com/users/evanphx'
-   const xhr =  new XMLHttpRequest()
-   xhr.open('GET',requestUrl)
-    xhr.onreadystatechange = function(){
-        console.log(xhr.readyState);
-        if(xhr.readyState === 4){
-            const data = JSON.parse(this.responseText)
+<script>        
+   const mainBody =  document.querySelector('.main')
+   const paragraph = document.createElement('p')
+   document.querySelector('.submit').addEventListener('click',(event) => {
+                const requestUrl = 'https://api.github.com/users/evanphx'
+                    const xhr =  new XMLHttpRequest()
+                    xhr.open('GET',requestUrl)
+                    xhr.onreadystatechange = function(){
+                        console.log(xhr.readyState);
+                        if(xhr.readyState === 4){
+                            const data = JSON.parse(this.responseText)
+                            const followers = data.followers
+                            const imageUrl = data.avatar_url
+                            const name = data.name
+                            // console.log(data);
+                            // console.log(typeof data);
+                            console.log(followers);
+                            console.log(imageUrl);
+                            console.log(name);
 
-            console.log(data);
-            console.log(typeof data);
-            console.log(data.followers);
-        }
-    }
-   xhr.send()
+                        }
+                    }
+                xhr.send()
+   })
+    
+   
 
 </script>
 </html>
