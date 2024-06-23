@@ -47,8 +47,58 @@ const promisefour = new Promise(function(reslove,reject){
 })
 
 promisefour.then((user)=>{
-    console.log(user.username);
+    console.log(user);
     return user.username
+}).then((username) =>{
+    console.log(username);
 }).catch((error) => {
     console.log(error);
+}).finally(() => {
+    console.log("Finally executed");
 })
+
+const promiseFive = new Promise(function(reslove,reject){
+    setTimeout(function(){
+        let error = true
+        if(!error){
+            reslove({username:"java",email:"smit@gmail.com",})
+        }
+        else{
+            reject('ERROR : JS went wrong')
+        }
+    },2000)
+})
+
+async function consumePromisedFive(){
+    try
+        {
+            const res = await promiseFive
+            console.log(res);
+        }
+    
+    catch(error){
+        console.log(error);
+    }
+}
+
+consumePromisedFive()
+
+
+// async function getAllUser(){
+//    try {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/users')
+//     const data = await res.json()
+//     console.log(data);
+//    } catch (error) {
+//         console.log("E: ",error);
+//    }
+// }
+
+// getAllUser()
+
+fetch('https://api.github.com/users/evanphx').then((res) =>{
+    return res.json()
+}).then((data) => {
+    console.log(data);
+})
+.catch((error) => console.log(error))
